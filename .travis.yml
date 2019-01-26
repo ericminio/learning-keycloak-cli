@@ -1,0 +1,13 @@
+language: minimal
+
+services:
+  - docker
+  
+before_install:
+  - docker pull jboss/keycloak
+  
+before_script:
+  - docker run --rm -v ./lib:/tmp/keycloak -p 8081:8080 --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
+  
+script:
+  - docker exec keycloak /tmp/keycloak/explore.sh
