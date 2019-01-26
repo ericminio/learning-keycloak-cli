@@ -9,6 +9,7 @@ before_install:
 before_script:
   - echo $TRAVIS_BUILD_DIR
   - docker run -d --rm -v $TRAVIS_BUILD_DIR/lib:/tmp/keycloak -p 8081:8080 --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
+  - sleep 45
 
 script:
   - docker exec keycloak /tmp/keycloak/explore.sh
