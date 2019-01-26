@@ -12,4 +12,4 @@ before_script:
   - sleep 45
 
 script:
-  - docker exec keycloak /tmp/keycloak/explore.sh
+  - ./tests/can_create_client.sh
