@@ -9,7 +9,9 @@ before_install:
 before_script:
   - echo $TRAVIS_BUILD_DIR
   - docker run -d --rm -v $TRAVIS_BUILD_DIR/lib:/tmp/keycloak -p 8081:8080 --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
-  - sleep 45
+  - sleep 33
 
 script:
   - ./tests/can_create_client.sh
+  - ./tests/can_create_role.sh
+  - ./tests/can_create_user_with_role.sh
